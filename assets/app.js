@@ -360,7 +360,7 @@
       '<div class="modal">' +
         "<h3>📝 노션 정리용 리포트</h3>" +
         (copied
-          ? '<span class="copyok"><span class="dot">✓</span>클립보드에 복사했어요. 노션에 붙여넣으면 됩니다.</span>'
+          ? '<span class="copyok"><span class="dot">✓</span>클립보드에 복사했어요. 채팅에 붙여넣으면 노션 NOTE로 정리됩니다.</span>'
           : '<p>자동 복사가 막혀 있어요. 아래 내용을 직접 복사해 주세요.</p>') +
         '<p>누적 통계와 약점 유형, 그리고 정리 방식 요청이 함께 담겨 있어요. 그대로 복사해 저에게 붙여넣어 주세요.</p>' +
         '<textarea id="reportText" readonly>' + esc(text) + "</textarea>" +
