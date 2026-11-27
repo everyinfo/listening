@@ -320,9 +320,10 @@
     if (tags.length) {
       lines.push("");
       lines.push("[유형별 정답률 (낮은 순)]");
-      tags.forEach(function (t) {
+      tags.slice(0, 12).forEach(function (t) {
         lines.push("- " + t.tag + " — " + t.p + "% (" + t.c + "/" + t.n + ")");
       });
+      if (tags.length > 12) lines.push("- 그 외 " + (tags.length - 12) + "개 유형은 대부분 정답");
     }
 
     if (store.recent.length) {

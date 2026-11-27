@@ -23,6 +23,7 @@ body{
   display:flex;align-items:center;justify-content:center;
   padding:20px;overflow:hidden;
   -webkit-font-smoothing:antialiased;
+  word-break:keep-all;
 }
 .card{
   width:min(430px,100%);max-height:calc(100dvh - 40px);
