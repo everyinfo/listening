@@ -172,11 +172,10 @@
     var arr = Object.keys(acc).map(function (k) { return { tag: k, n: acc[k].n, c: acc[k].c, r: acc[k].c / acc[k].n }; });
     var weak = arr.slice().sort(function (a, b) { return a.r - b.r || b.n - a.n; })[0];
     var strong = arr.filter(function (x) { return x.r === 1 && x.n >= 2; }).sort(function (a, b) { return b.n - a.n; })[0];
-    var wrong = weak.n - weak.c;
+    var wrongTotal = total - correct;
     var msg = "";
     if (strong && strong.tag !== weak.tag) msg = josa(strong.tag, "은는") + " 안정적이고, ";
-    msg += weak.tag + "에서 " + wrong + "문제를 놓쳤어요.";
-    if (!strong) msg += " 나머지 유형은 무난했어요.";
+    msg += wrongTotal + "문제를 놓쳤어요. 가장 약한 유형은 " + weak.tag + " (" + weak.c + "/" + weak.n + ")예요.";
     return msg;
   }
 
