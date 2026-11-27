@@ -170,13 +170,13 @@
       if (a === q.answer) acc[q.tag].c++;
     });
     var arr = Object.keys(acc).map(function (k) { return { tag: k, n: acc[k].n, c: acc[k].c, r: acc[k].c / acc[k].n }; });
-    arr.sort(function (a, b) { return a.r - b.r; });
-    var worst = arr[0];
-    var best = arr.filter(function (x) { return x.r === 1; }).sort(function (a, b) { return b.n - a.n; })[0];
-    var wrong = worst.n - worst.c;
+    var weak = arr.slice().sort(function (a, b) { return a.r - b.r || b.n - a.n; })[0];
+    var strong = arr.filter(function (x) { return x.r === 1 && x.n >= 2; }).sort(function (a, b) { return b.n - a.n; })[0];
+    var wrong = weak.n - weak.c;
     var msg = "";
-    if (best) msg += josa(best.tag, "은/는") + " 안정적이고, ";
-    msg += worst.tag + "에서 " + wrong + "문제를 놓쳤어요.";
+    if (strong && strong.tag !== weak.tag) msg = josa(strong.tag, "은는") + " 안정적이고, ";
+    msg += weak.tag + "에서 " + wrong + "문제를 놓쳤어요.";
+    if (!strong) msg += " 나머지 유형은 무난했어요.";
     return msg;
   }
 
